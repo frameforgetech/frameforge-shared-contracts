@@ -4,18 +4,7 @@ export * from './entities';
 // Export TypeORM migrations
 export * from './migrations';
 
-// Job Status Types
-export type JobStatus = 'pending' | 'processing' | 'completed' | 'failed';
-
-// User Types
-export interface User {
-  userId: string;
-  username: string;
-  email: string;
-  passwordHash: string;
-  createdAt: Date;
-  updatedAt: Date;
-}
+// User Types (API contracts)
 
 export interface RegisterRequest {
   username: string;
@@ -55,20 +44,7 @@ export interface ValidateResponse {
   username?: string;
 }
 
-// Video Job Types
-export interface VideoJob {
-  jobId: string;
-  userId: string;
-  filename: string;
-  status: JobStatus;
-  videoUrl: string;
-  resultUrl?: string;
-  frameCount?: number;
-  errorMessage?: string;
-  createdAt: Date;
-  startedAt?: Date;
-  completedAt?: Date;
-}
+// Video Job Types (API contracts)
 
 export interface UploadUrlRequest {
   filename: string;
@@ -89,14 +65,14 @@ export interface CreateJobRequest {
 
 export interface CreateJobResponse {
   jobId: string;
-  status: JobStatus;
+  status: string;
   createdAt: string;
 }
 
 export interface JobSummary {
   jobId: string;
   filename: string;
-  status: JobStatus;
+  status: string;
   createdAt: string;
   completedAt?: string;
   downloadUrl?: string;
@@ -116,7 +92,7 @@ export interface JobDetailResponse {
   jobId: string;
   userId: string;
   filename: string;
-  status: JobStatus;
+  status: string;
   videoUrl: string;
   resultUrl?: string;
   frameCount?: number;
@@ -181,23 +157,22 @@ export interface FrameInfo {
   size: number;
 }
 
-// Notification Types
-export interface Notification {
-  notificationId: string;
+// Notification Types (API contracts)
+export interface NotificationMessage {
   jobId: string;
-  notificationType: 'success' | 'failure';
+  userId: string;
   recipientEmail: string;
-  deliveryStatus: 'pending' | 'sent' | 'failed';
-  retryCount: number;
+  notificationType: 'success' | 'failure';
+  filename: string;
+  resultUrl?: string;
   errorMessage?: string;
-  createdAt: Date;
-  sentAt?: Date;
+  timestamp: string;
 }
 
 // Cache Types
 export interface CachedJob {
   jobId: string;
-  status: JobStatus;
+  status: string;
   filename: string;
   createdAt: string;
   completedAt?: string;
