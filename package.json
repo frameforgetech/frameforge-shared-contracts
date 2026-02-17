@@ -1,0 +1,47 @@
+{
+  "name": "@frameforge/shared-contracts",
+  "version": "1.0.0",
+  "description": "Shared TypeScript contracts and database entities",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/frameforgetech/frameforge-shared-contracts.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "dependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/express": "^4.17.25",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/uuid": "^9.0.8",
+    "bcrypt": "^5.1.1",
+    "class-validator": "^0.14.0",
+    "express": "^4.22.1",
+    "jsonwebtoken": "^9.0.3",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.3.17",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.8",
+    "@types/node": "^20.10.0",
+    "@types/pg": "^8.10.9",
+    "@types/supertest": "^6.0.3",
+    "better-sqlite3": "^12.6.2",
+    "fast-check": "^3.15.0",
+    "jest": "^29.7.0",
+    "pg": "^8.11.3",
+    "supertest": "^7.2.2",
+    "ts-jest": "^29.1.1",
+    "typescript": "^5.3.2"
+  }
+}
