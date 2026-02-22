@@ -7,14 +7,14 @@ export class CreateVideoJobsTable1700000002000 implements MigrationInterface {
         name: 'video_jobs',
         columns: [
           {
-            name: 'jobId',
+            name: 'job_id',
             type: 'uuid',
             isPrimary: true,
             generationStrategy: 'uuid',
             default: 'gen_random_uuid()',
           },
           {
-            name: 'userId',
+            name: 'user_id',
             type: 'uuid',
             isNullable: false,
           },
@@ -31,38 +31,38 @@ export class CreateVideoJobsTable1700000002000 implements MigrationInterface {
             isNullable: false,
           },
           {
-            name: 'videoUrl',
+            name: 'video_url',
             type: 'text',
             isNullable: false,
           },
           {
-            name: 'resultUrl',
+            name: 'result_url',
             type: 'text',
             isNullable: true,
           },
           {
-            name: 'frameCount',
+            name: 'frame_count',
             type: 'integer',
             isNullable: true,
           },
           {
-            name: 'errorMessage',
+            name: 'error_message',
             type: 'text',
             isNullable: true,
           },
           {
-            name: 'createdAt',
+            name: 'created_at',
             type: 'timestamp',
             default: 'NOW()',
             isNullable: false,
           },
           {
-            name: 'startedAt',
+            name: 'started_at',
             type: 'timestamp',
             isNullable: true,
           },
           {
-            name: 'completedAt',
+            name: 'completed_at',
             type: 'timestamp',
             isNullable: true,
           },
@@ -82,7 +82,7 @@ export class CreateVideoJobsTable1700000002000 implements MigrationInterface {
       'video_jobs',
       new TableIndex({
         name: 'idx_jobs_user_id',
-        columnNames: ['userId'],
+        columnNames: ['user_id'],
       })
     );
 
@@ -98,7 +98,7 @@ export class CreateVideoJobsTable1700000002000 implements MigrationInterface {
       'video_jobs',
       new TableIndex({
         name: 'idx_jobs_created_at',
-        columnNames: ['createdAt'],
+        columnNames: ['created_at'],
       })
     );
 
@@ -106,7 +106,7 @@ export class CreateVideoJobsTable1700000002000 implements MigrationInterface {
       'video_jobs',
       new TableIndex({
         name: 'idx_jobs_user_status',
-        columnNames: ['userId', 'status'],
+        columnNames: ['user_id', 'status'],
       })
     );
 
@@ -115,9 +115,9 @@ export class CreateVideoJobsTable1700000002000 implements MigrationInterface {
       'video_jobs',
       new TableForeignKey({
         name: 'fk_video_jobs_user',
-        columnNames: ['userId'],
+        columnNames: ['user_id'],
         referencedTableName: 'users',
-        referencedColumnNames: ['userId'],
+        referencedColumnNames: ['user_id'],
         onDelete: 'CASCADE',
       })
     );

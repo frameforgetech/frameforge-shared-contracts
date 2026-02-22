@@ -7,7 +7,7 @@ export class CreateUsersTable1700000001000 implements MigrationInterface {
         name: 'users',
         columns: [
           {
-            name: 'userId',
+            name: 'user_id',
             type: 'uuid',
             isPrimary: true,
             generationStrategy: 'uuid',
@@ -28,19 +28,19 @@ export class CreateUsersTable1700000001000 implements MigrationInterface {
             isNullable: false,
           },
           {
-            name: 'passwordHash',
+            name: 'password_hash',
             type: 'varchar',
             length: '255',
             isNullable: false,
           },
           {
-            name: 'createdAt',
+            name: 'created_at',
             type: 'timestamp',
             default: 'NOW()',
             isNullable: false,
           },
           {
-            name: 'updatedAt',
+            name: 'updated_at',
             type: 'timestamp',
             default: 'NOW()',
             isNullable: false,

@@ -20,15 +20,15 @@ export enum JobStatus {
 @Entity('video_jobs')
 @Index('idx_jobs_user_status', ['userId', 'status'])
 export class VideoJob {
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryGeneratedColumn('uuid', { name: 'job_id' })
   jobId!: string;
 
-  @Column({ type: 'uuid' })
+  @Column({ name: 'user_id', type: 'uuid' })
   @Index('idx_jobs_user_id')
   userId!: string;
 
   @ManyToOne(() => User, { onDelete: 'CASCADE' })
-  @JoinColumn({ name: 'userId' })
+  @JoinColumn({ name: 'user_id' })
   user!: User;
 
   @Column({ type: 'varchar', length: 255 })
@@ -43,35 +43,35 @@ export class VideoJob {
   @IsEnum(JobStatus, { message: 'Invalid job status' })
   status!: JobStatus;
 
-  @Column({ type: 'text' })
+  @Column({ name: 'video_url', type: 'text' })
   @IsString()
   videoUrl!: string;
 
-  @Column({ type: 'text', nullable: true })
+  @Column({ name: 'result_url', type: 'text', nullable: true })
   @IsOptional()
   @IsString()
   resultUrl?: string;
 
-  @Column({ type: 'integer', nullable: true })
+  @Column({ name: 'frame_count', type: 'integer', nullable: true })
   @IsOptional()
   @IsInt()
   @Min(0)
   frameCount?: number;
 
-  @Column({ type: 'text', nullable: true })
+  @Column({ name: 'error_message', type: 'text', nullable: true })
   @IsOptional()
   @IsString()
   errorMessage?: string;
 
-  @CreateDateColumn({ type: 'timestamp' })
+  @CreateDateColumn({ name: 'created_at', type: 'timestamp' })
   @Index('idx_jobs_created_at')
   createdAt!: Date;
 
-  @Column({ type: 'timestamp', nullable: true })
+  @Column({ name: 'started_at', type: 'timestamp', nullable: true })
   @IsOptional()
   startedAt?: Date;
 
-  @Column({ type: 'timestamp', nullable: true })
+  @Column({ name: 'completed_at', type: 'timestamp', nullable: true })
   @IsOptional()
   completedAt?: Date;
 }
