@@ -1,6 +1,6 @@
 {
   "name": "@frameforgetech/shared-contracts",
-  "version": "0.0.3",
+  "version": "0.0.2",
   "description": "Shared TypeScript contracts and database entities",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
