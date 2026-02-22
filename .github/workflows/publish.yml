@@ -8,6 +8,8 @@ jobs:
   version-and-tag:
     name: Generate Version and Tag
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     outputs:
       new_tag: ${{ steps.tag_version.outputs.new_tag }}
     steps:
