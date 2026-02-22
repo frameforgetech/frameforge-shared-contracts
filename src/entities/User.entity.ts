@@ -10,7 +10,7 @@ import { IsEmail, IsString, Length, Matches } from 'class-validator';
 
 @Entity('users')
 export class User {
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryGeneratedColumn('uuid', { name: 'user_id' })
   userId!: string;
 
   @Column({ type: 'varchar', length: 50, unique: true })
@@ -27,13 +27,13 @@ export class User {
   @IsEmail({}, { message: 'Invalid email address' })
   email!: string;
 
-  @Column({ type: 'varchar', length: 255 })
+  @Column({ name: 'password_hash', type: 'varchar', length: 255 })
   @IsString()
   passwordHash!: string;
 
-  @CreateDateColumn({ type: 'timestamp' })
+  @CreateDateColumn({ name: 'created_at', type: 'timestamp' })
   createdAt!: Date;
 
-  @UpdateDateColumn({ type: 'timestamp' })
+  @UpdateDateColumn({ name: 'updated_at', type: 'timestamp' })
   updatedAt!: Date;
 }
